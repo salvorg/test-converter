@@ -13,6 +13,7 @@ import {useAppDispatch, useAppSelector} from "../app/hooks";
 import {selectCurrencies, selectExchangeRates} from "../features/currencies/currenciesSlice";
 import {fetchAll, fetchExchangeRates} from "../features/currencies/currenciesThunks";
 import dayjs from 'dayjs'
+import {Link} from "react-router-dom";
 
 const Latest = () => {
   const dispatch = useAppDispatch();
@@ -36,6 +37,7 @@ const Latest = () => {
 
   return (
     <Grid container flexDirection={"column"} alignItems={"center"} sx={{ mt: 5 }}>
+      <Link to="/">Go back to converter</Link>
       <Typography variant="h4">Exchange Rates: </Typography>
       <FormControl sx={{ mt: 4, minWidth: 120 }}>
         <InputLabel id="demo-simple-select-helper-label">Choose currency</InputLabel>
