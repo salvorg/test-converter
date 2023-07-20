@@ -7,7 +7,7 @@ import {
   ListItem,
   MenuItem,
   Select,
-  SelectChangeEvent
+  SelectChangeEvent, Typography
 } from "@mui/material";
 import {useAppDispatch, useAppSelector} from "../app/hooks";
 import {selectCurrencies, selectExchangeRates} from "../features/currencies/currenciesSlice";
@@ -36,7 +36,8 @@ const Latest = () => {
 
   return (
     <Grid container flexDirection={"column"} alignItems={"center"} sx={{ mt: 5 }}>
-      <FormControl sx={{m: 1, minWidth: 120}}>
+      <Typography variant="h4">Exchange Rates: </Typography>
+      <FormControl sx={{ mt: 4, minWidth: 120 }}>
         <InputLabel id="demo-simple-select-helper-label">Choose currency</InputLabel>
         <Select
           labelId="demo-simple-select-helper-label"
