@@ -1,7 +1,9 @@
 import React, {useState} from 'react';
-import {Box, Button, Container, Grid, Link, TextField} from "@mui/material";
-import axiosApi from "../../axiosApi";
-import { apiKey } from "../../constants";
+import {Box, Button, Container, Grid, TextField} from "@mui/material";
+import axiosApi from "../axiosApi";
+import { apiKey } from "../constants";
+import {ApiConverted} from "../types";
+import {Link} from "react-router-dom";
 
 const Home = () => {
   const [inputState, setInputState] = useState<string>('');
@@ -16,9 +18,9 @@ const Home = () => {
       const firstCurr = withoutNumbers.slice(1, 4).toUpperCase();
       const secondCurr = withoutNumbers.slice(8, 11).toUpperCase();
       const response = await axiosApi.get(`latest${apiKey}&currencies=${secondCurr}&base_currency=${firstCurr}`);
-      const getObjectWithValue = response.data[Object.keys(response.data)[0]];
-      const value = (getObjectWithValue[Object.keys(getObjectWithValue)[0]] * sum).toFixed(2);
-      setConverted(`${sum} ${firstCurr} = ${value} ${secondCurr}`);
+      const data: ApiConverted = response.data;
+      const value = Object.values(data.data);
+      setConverted(`${sum} ${firstCurr} = ${value[0].toFixed(2)} ${secondCurr}`);
     } catch (e) {
       setError('Wrong format or wrong currency. Try again');
     }
@@ -33,13 +35,13 @@ const Home = () => {
     <Container maxWidth="xl">
         <Box
           style={{
-            marginTop: 8,
+            marginTop: '20px',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
           }}
         >
-          <Link href="/latest">See latest currencies</Link>
+          <Link to="/latest">See latest currencies</Link>
           <TextField
             placeholder="100 usd in rub"
             label="enter currency"
