@@ -36,9 +36,9 @@ const Latest = () => {
   };
 
   return (
-    <Grid container flexDirection={"column"} alignItems={"center"} sx={{ mt: 5 }}>
+    <Grid container flexDirection={"column"} alignItems={"center"} sx={{ mt: 3 }}>
       <Link to="/">Go back to converter</Link>
-      <Typography variant="h4">Exchange Rates: </Typography>
+      <Typography variant="h4" sx={{ mt: 3 }}>Exchange Rates: </Typography>
       <FormControl sx={{ mt: 4, minWidth: 120 }}>
         <InputLabel id="demo-simple-select-helper-label">Choose currency</InputLabel>
         <Select
