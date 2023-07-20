@@ -20,7 +20,7 @@ const Home = () => {
       const response = await axiosApi.get(`latest${apiKey}&currencies=${secondCurr}&base_currency=${firstCurr}`);
       const data: ApiConverted = response.data;
       const value = Object.values(data.data);
-      setConverted(`${sum} ${firstCurr} = ${value[0].toFixed(2)} ${secondCurr}`);
+      setConverted(`${sum} ${firstCurr} = ${(value[0] * sum).toFixed(2)} ${secondCurr}`);
     } catch (e) {
       setError('Wrong format or wrong currency. Try again');
     }
