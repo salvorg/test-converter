@@ -16,6 +16,7 @@ export interface ApiCurrency {
   symbol_native: string;
 }
 
-export interface ApiCurrenciesData {
-  [key: string]: ApiCurrency;
+export interface ApiExchangeRates {
+  code: string;
+  value: number;
 }
