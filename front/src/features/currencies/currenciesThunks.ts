@@ -19,7 +19,9 @@ export const fetchExchangeRates = createAsyncThunk<ApiExchangeRates[], string>(
     const values: number[] = Object.values(response.data.data);
     const data = [];
     for (let i = 0; i < values.length; i++) {
-      data.push({code: keys[i], value: values[i]});
+      if (keys[i] !== baseCurrency) {
+        data.push({code: keys[i], value: values[i]});
+      }
     }
     return data;
   },
